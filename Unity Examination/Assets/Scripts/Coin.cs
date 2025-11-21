@@ -13,6 +13,8 @@ public class Coin : MonoBehaviour
         {
             Oneshot oneshot = Instantiate(_prefabOneshot, transform.position, Quaternion.identity).GetComponent<Oneshot>();
             oneshot.Play(_sound);
+
+            GameManager.Instance.UpdateCoinCounter();
             
             Destroy(gameObject);
         }
