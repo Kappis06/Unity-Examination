@@ -1,9 +1,12 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Coin : MonoBehaviour
 {
     [SerializeField] private GameObject _prefabOneshot;
     [SerializeField] private AudioClip _sound;
+
+    [SerializeField] private UnityEvent _onPickUp;
     
     
     
@@ -15,6 +18,8 @@ public class Coin : MonoBehaviour
             oneshot.Play(_sound);
 
             GameManager.Instance.UpdateCoinCounter();
+            
+            _onPickUp.Invoke();
             
             Destroy(gameObject);
         }
